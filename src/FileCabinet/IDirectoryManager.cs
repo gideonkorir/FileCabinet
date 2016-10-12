@@ -9,7 +9,6 @@ namespace FileCabinet
     public interface IDirectoryManager
     {
         string Type { get; }
-        IDirectory GetDirectory(string directoryName);
         Task<IDirectory> GetDirectoryAsync(string directoryName, CancellationToken cancellation);
     }
 }

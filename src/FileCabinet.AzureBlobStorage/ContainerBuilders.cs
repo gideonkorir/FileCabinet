@@ -8,22 +8,26 @@ namespace FileCabinet.AzureBlobStorage
 {
     public static class ContainerBuilders
     {
-        public static Func<string, CloudBlobContainer> CreateContainerPerDirectoryBuilder(CloudBlobClient client)
+        public static Func<string, Task<CloudBlobContainer>> CreateContainerPerDirectoryBuilder(CloudBlobClient client)
         {
-            return (name) =>
+            return async (name) =>
             {
-                return client.GetContainerReference(name);
+                var container = client.GetContainerReference(name);
+                await container.CreateIfNotExistsAsync().ConfigureAwait(false);
+                return container;
             };
         }
 
-        public static Func<string, CloudBlobContainer> CreateVirtualDirectoryBuilder(CloudBlobClient client, string containerName)
+        public static Func<string, Task<CloudBlobContainer>> CreateVirtualDirectoryBuilder(CloudBlobClient client, string containerName)
         {
             if (string.IsNullOrWhiteSpace(containerName))
                 throw new ArgumentNullException(nameof(containerName));
 
-            return (name) =>
+            return async (name) =>
             {
-                return client.GetContainerReference(containerName);
+                var container = client.GetContainerReference(containerName);
+                await container.CreateIfNotExistsAsync().ConfigureAwait(false);
+                return container;
             };
         }
     }

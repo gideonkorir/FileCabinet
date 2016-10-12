@@ -10,15 +10,15 @@ namespace FileCabinet.AzureBlobStorage
 {
     public class AzureBlobStorageDirectoryManager : IDirectoryManager
     {
-        const string defaultDirectoryName = "Uploads";
+        const string defaultDirectoryName = "Documents";
 
-        readonly Func<string, CloudBlobContainer> containerBuilder;
+        readonly Func<string, Task<CloudBlobContainer>> containerBuilder;
         readonly Func<DateTime> utcClock;
         readonly NewFileIdGenerator fileIdGenerator;
         
         public string Type { get; } = "Azure Blob Storage";
 
-        public AzureBlobStorageDirectoryManager(Func<string, CloudBlobContainer> containerBuilder,
+        public AzureBlobStorageDirectoryManager(Func<string, Task<CloudBlobContainer>> containerBuilder,
             Func<DateTime> utcClock, 
             NewFileIdGenerator fileIdGenerator)
         {
@@ -33,16 +33,12 @@ namespace FileCabinet.AzureBlobStorage
             this.fileIdGenerator = fileIdGenerator;
         }
 
-        public IDirectory GetDirectory(string directoryName)
+        public async Task<IDirectory> GetDirectoryAsync(string directoryName, CancellationToken cancellation)
         {
             var name = string.IsNullOrWhiteSpace(directoryName) ? defaultDirectoryName : directoryName;
-            return new AzureBlobContainerDirectory(name, containerBuilder(name),
+            var container = await containerBuilder(name);
+            return new AzureBlobContainerDirectory(name, container,
                 fileIdGenerator, utcClock);
-        }
-
-        public Task<IDirectory> GetDirectoryAsync(string directoryName, CancellationToken cancellation)
-        {
-            return Task.FromResult(GetDirectory(directoryName));
         }
 
         string GetDirectoryNameOrDefault(string directoryName)
