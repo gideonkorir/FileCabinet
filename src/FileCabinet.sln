@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "FileCabinet", "FileCabinet\FileCabinet.xproj", "{3BF8CA37-27E9-477C-A47D-4957D339ABC1}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "FileCabinet.AzureBlobStorage", "FileCabinet.AzureBlobStorage\FileCabinet.AzureBlobStorage.xproj", "{21F7835A-3B34-4A40-98D5-E3A4D2F6F177}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{3BF8CA37-27E9-477C-A47D-4957D339ABC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BF8CA37-27E9-477C-A47D-4957D339ABC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BF8CA37-27E9-477C-A47D-4957D339ABC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21F7835A-3B34-4A40-98D5-E3A4D2F6F177}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21F7835A-3B34-4A40-98D5-E3A4D2F6F177}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21F7835A-3B34-4A40-98D5-E3A4D2F6F177}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21F7835A-3B34-4A40-98D5-E3A4D2F6F177}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

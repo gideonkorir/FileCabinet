@@ -8,10 +8,10 @@ namespace FileCabinet
 {
     public static class Directory
     {
-        public static Task<string[]> FetchAsync(this IDirectory directory, string[] fileIds,
+        public static Task<IFilePointer[]> FetchAsync(this IDirectory directory, string[] fileIds,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var tasks = new Task<string>[fileIds.Length];
+            var tasks = new Task<IFilePointer>[fileIds.Length];
             for (int i = 0; i < tasks.Length; i++)
                 tasks[i] = directory.FindAsync(fileIds[i], cancellationToken);
             return Task.WhenAll(tasks);

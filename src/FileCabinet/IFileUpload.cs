@@ -14,6 +14,8 @@ namespace FileCabinet
         string Description { get; }
         string UploaderId { get; }
 
+        Task<Stream> GetReadStreamAsync();
+
         void CopyTo(Stream steam);
 
         Task CopyToAsync(Stream stream, CancellationToken cancellationToken);

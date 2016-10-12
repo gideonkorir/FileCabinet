@@ -13,8 +13,6 @@ namespace FileCabinet
 
         FileMetaData MetaData { get; }
 
-        void Copy(Stream destination);
-
         Task CopyAsync(Stream destination, CancellationToken cancellation);
     }
 }
