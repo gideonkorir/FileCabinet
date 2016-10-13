@@ -13,5 +13,16 @@
       },
       "imports": [ "dnxcore50", "portable-net451+win8" ]
     }
+  },
+  "authors": [ "Gideon Korir" ],
+  "packOptions": {
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/gideonkorir/FileCabinet"
+    },
+    "owners": [ "Gideon Korir" ],
+    "tags": [ "files" ],
+    "summary": "Simple library to allow application to store and retrieve files later",
+    "requireLicenseAcceptance": false
   }
 }

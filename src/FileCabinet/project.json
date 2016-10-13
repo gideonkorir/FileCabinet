@@ -6,5 +6,16 @@
   "frameworks": {
     "netstandard1.3": {},
     "netcoreapp1.0": {}
+  },
+  "authors": [ "Gideon Korir" ],
+  "packOptions": {
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/gideonkorir/FileCabinet"
+    },
+    "owners": [ "Gideon Korir" ],
+    "tags": [ "files" ],
+    "summary": "Simple library to allow application to store and retrieve files later",
+    "requireLicenseAcceptance": false
   }
 }
